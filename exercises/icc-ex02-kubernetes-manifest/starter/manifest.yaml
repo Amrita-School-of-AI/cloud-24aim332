@@ -1,0 +1,55 @@
+# ===========================================================================
+# Exercise ICC-02 — A production-shaped Kubernetes Deployment
+#
+# Write a single YAML file containing a Deployment and a Service for a web
+# application. It must satisfy the checklist below; each item is checked.
+#
+# THE DEPLOYMENT
+#   * apiVersion apps/v1, kind Deployment
+#   * 3 replicas
+#   * a selector that actually matches the pod template's labels
+#   * one container using image  ghcr.io/example/web:1.4.2
+#       - the tag must be a real version. `latest` is rejected: it is not a
+#         version, it makes rollbacks impossible, and two nodes can end up
+#         running different code under the same name.
+#   * containerPort 8080
+#
+# THE PROBES
+#   * a livenessProbe  and a readinessProbe, both HTTP GET on port 8080
+#   * they must use DIFFERENT paths, because they answer different questions:
+#       liveness  = is the process alive?      failing restarts the container
+#       readiness = can it serve traffic now?  failing only removes it from
+#                   the Service
+#     A liveness probe that depends on the database restarts every pod during
+#     a database blip, which makes the outage worse.
+#
+# RESOURCES
+#   * both requests and limits for cpu and memory
+#     requests drive scheduling AND horizontal autoscaling; without them the
+#     scheduler assumes the pod needs nothing and packs the node.
+#
+# SECURITY
+#   * runAsNonRoot: true
+#   * no plaintext password, token, key or secret anywhere in the file.
+#     Use env.valueFrom.secretKeyRef instead.
+#
+# THE SERVICE
+#   * kind Service, selecting the Deployment's pods by label
+#   * port 80 forwarding to targetPort 8080
+#
+# Separate the two documents with `---`.
+#
+# Check your work:   ./selfcheck.sh
+# ===========================================================================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  # TODO: replicas, selector, template with labels, container, probes,
+  #       resources, securityContext
+  replicas: 1
+
+---
+# TODO: the Service
