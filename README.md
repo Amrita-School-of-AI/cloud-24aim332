@@ -1,4 +1,4 @@
-# 24AIM332 — Introduction to Cloud Computing
+# 24AIM332 · Introduction to Cloud Computing
 
 **Dr. Abhijith Anandakrishnan**, Assistant Professor
 Amrita School of AI, Amrita Vishwa Vidyapeetham, Coimbatore
@@ -7,16 +7,12 @@ L-T-P-C 3-0-2-4 · Semester 5 · B.Tech Artificial Intelligence and Data Science
 
 ---
 
-All course material lives here: notes, slides, assignments, lab sheets and coding
-exercises. Everything is a PDF built from source in this repository, so it is the
-same on every machine and works offline.
+All course material lives here. Everything is a PDF built from source, so it is
+the same on every machine and works offline.
 
 ## New here? Start with the Getting Started guide
 
-**[handbook/student-guide.pdf](handbook/student-guide.pdf)** takes you from a
-laptop with nothing installed to a working setup: a GitHub SSH key, your own fork,
-the compiler, and automatic checking of your work on every push. About forty
-minutes, once.
+**[handbook/student-guide.pdf](handbook/student-guide.pdf)** takes you from a laptop with nothing installed to a working setup: a GitHub SSH key, your own fork, a cloud account with a spending alert already set, and Docker, kubectl and a local Kubernetes cluster. About forty minutes, once.
 
 Then read **[handbook/course-handbook.pdf](handbook/course-handbook.pdf)** for the
 week-by-week plan, the marks breakdown and the policies.
@@ -27,7 +23,7 @@ week-by-week plan, the marks breakdown and the policies.
 | Document | Size |
 |---|---|
 | [course handbook](handbook/course-handbook.pdf) | 585 KB |
-| [student guide](handbook/student-guide.pdf) | 752 KB |
+| [student guide](handbook/student-guide.pdf) | 768 KB |
 
 ### Slide decks
 
@@ -66,31 +62,19 @@ week-by-week plan, the marks breakdown and the policies.
 
 ## Working the coding exercises
 
-Each exercise folder contains a problem statement PDF, a `starter/` file to edit,
-the **public tests** used to grade part of your submission, and `selfcheck.sh`.
+Each exercise folder contains a problem statement PDF, a `starter/` file to
+edit, the checker in `tests/`, and `selfcheck.sh`. Work in your own fork:
 
 ```bash
-git clone https://github.com/Amrita-School-of-AI/cloud-24aim332.git
-cd cloud-24aim332/exercises/<exercise-name>
-./selfcheck.sh
+cd exercises/icc-ex02-kubernetes-manifest
+cp starter/manifest.yaml ../../submissions/icc-ex02-kubernetes-manifest/AIE23001.yaml
+# edit it, then:
+./selfcheck.sh ../../submissions/icc-ex02-kubernetes-manifest/AIE23001.yaml
 ```
 
-When it passes, rename your edited starter file to your **roll number** and submit
-that single file:
-
-```
-AIE23001.c
-```
-
-No archive, no folder. Grading also runs hidden tests, a determinism check across
-several thread counts, and where relevant a speedup measurement, so a clean
-`selfcheck.sh` is necessary but not sufficient.
-
-## Rebuilding the PDFs
-
-Every document is generated from Markdown by the toolkit in the course repository.
-Continuous integration rebuilds them on each push and refuses to publish a PDF that
-fails font-embedding or layout checks.
+Submit one file, named for your roll number. The class assignment is a
+repository plus a report; the course handbook gives the stages, marks and
+deadline.
 
 ## Licence and reuse
 
